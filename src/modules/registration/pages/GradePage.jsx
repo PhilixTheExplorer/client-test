@@ -2,6 +2,8 @@ import NavBar from "../components/NavBar";
 import SInfoCard from "../components/SInfoCard";
 import GradeCard from "../components/GradeCard";
 import HeadLineCard from "../components/HeadLineCard";
+import { mainStyles, containerDivStyles } from "../styles/styles";
+
 function GradePage() {
   const courses = [
     {
@@ -25,9 +27,9 @@ function GradePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className={containerDivStyles}>
       <NavBar />
-      <main className="mx-auto p-6 w-4/5">
+      <main className={mainStyles}>
         <HeadLineCard title="My Past Grade Results" link="/regis/transcript" />
         <div className="divider"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 bg-white p-6 shadow-md rounded-md">

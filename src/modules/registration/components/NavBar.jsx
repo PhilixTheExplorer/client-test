@@ -4,12 +4,13 @@ import {
   faTimes,
   faAngleDown,
   faRightFromBracket,
+  faCircleUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useRef } from "react";
 import { navbarColors } from "../styles/colors";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const NavBar = () => {
   const navigationLinks = [
     {
       name: "Payment",
@@ -50,12 +51,19 @@ const Navbar = () => {
   ];
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const profileRef = useRef(null);
+  const mobileNavRef = useRef(null); // Mobile nav reference
 
   // Close the navigation dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setIsProfileOpen(false);
+      }
+      if (
+        mobileNavRef.current &&
+        !mobileNavRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
       }
     };
 
@@ -76,12 +84,17 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-white w-full ${isOpen ? "absolute h-full z-[100]" : ""}`}
+      className={`w-full ${
+        isOpen ? "absolute overflow-y-auto h-full z-[100]" : ""
+      }`}
     >
       <div
-        className={`hidden md:block py-2 mx-auto max-w-7xl md:px-8 text-white bg-gradient-to-r from-[${navbarColors.gradientFrom}] via-[${navbarColors.gradientVia}] to-[${navbarColors.gradientTo}]`}
+        className={`hidden md:block md:px-8 text-white bg-gradient-to-r`}
+        style={{
+          backgroundImage: `linear-gradient(to right, ${navbarColors.gradientFrom}, ${navbarColors.gradientTo})`,
+        }}
       >
-        <div className=" h-16 flex justify-between items-center">
+        <div className="h-16 flex py-2 mx-auto max-w-7xl justify-between items-center">
           <Link to="/">
             <div className="text-lg font-bold">CampusLink</div>
           </Link>
@@ -115,7 +128,7 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-          <div className="relative mr-4" ref={profileRef}>
+          <div className="relative mr-2" ref={profileRef}>
             <button
               onClick={() => setIsProfileOpen((prev) => !prev)}
               className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -130,11 +143,13 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={`md:hidden text-white py-2 px-4 flex flex-col justify-between bg-gradient-to-r from-[${
-          navbarColors.gradientFrom
-        }] to-[${navbarColors.gradientTo}] ${
+        className={`md:hidden text-white py-2 px-4 flex flex-col justify-between bg-gradient-to-r  ${
           isOpen ? "w-3/4 h-full rounded-e-2xl" : ""
         }`}
+        style={{
+          backgroundImage: `linear-gradient(to right, ${navbarColors.gradientFrom}, ${navbarColors.gradientTo})`,
+        }}
+        ref={mobileNavRef}
       >
         <div className="flex justify-between items-center">
           <button
@@ -147,6 +162,7 @@ const Navbar = () => {
               <FontAwesomeIcon icon={faBars} className="h-6 w-6" />
             )}
           </button>
+
           {!isOpen && (
             <div className="relative mr-2" ref={profileRef}>
               <button
@@ -164,7 +180,13 @@ const Navbar = () => {
         </div>
 
         {isOpen && (
-          <div className="w-4/5 flex flex-grow flex-col justify-between">
+          <div className="w-4/5 h-full overflow-x-hidden flex flex-grow flex-col justify-between">
+            <div className="mx-auto my-6">
+              <FontAwesomeIcon
+                icon={faCircleUser}
+                className="text-black w-20 h-20 mr-4"
+              />
+            </div>
             <div className="mt-4 space-y-2">
               {navigationLinks.map((link, index) => (
                 <>
@@ -250,4 +272,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

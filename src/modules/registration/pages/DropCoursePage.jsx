@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NavBar from "../components/NavBar";
 import HeadLineCard from "../components/HeadLineCard";
+import { mainStyles, containerDivStyles } from "../styles/styles";
 
 function DropCoursePage() {
   const [courses, setCourses] = useState([
@@ -31,9 +32,9 @@ function DropCoursePage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100">
+      <div className={containerDivStyles}>
         <NavBar />
-        <main className="mx-auto p-6 w-4/5">
+        <main className={mainStyles}>
           <HeadLineCard title="Drop Courses" link="/regis/course/detail" />
           <div className="divider"></div>
           <div className=" bg-white p-6 shadow-md rounded-md">

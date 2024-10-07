@@ -2,6 +2,7 @@ import GPAXCard from "../components/GPAXCard";
 import HeadLineCard from "../components/HeadLineCard";
 import NavBar from "../components/NavBar";
 import TranscriptCard from "../components/TranscriptCard";
+import { mainStyles, containerDivStyles } from "../styles/styles";
 
 function TranscriptPage() {
   const semesters = [
@@ -23,9 +24,9 @@ function TranscriptPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100">
+      <div className={containerDivStyles}>
         <NavBar />
-        <main className="mx-auto p-6 w-4/5">
+        <main className={mainStyles}>
           <HeadLineCard title="Transcript" link="/regis/course/detail" />
           <div className="divider"></div>
           <div className="bg-white p-6 shadow-md rounded-md">

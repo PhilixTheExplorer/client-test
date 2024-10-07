@@ -2,7 +2,8 @@ import HeadLineCard from "../components/HeadLineCard";
 import SInfoCard from "../components/SInfoCard";
 import CourseTable from "../components/CourseTable";
 import { Link } from "react-router-dom";
-import Navbar from "../components/NavBar";
+import NavBar from "../components/NavBar";
+import { mainStyles, containerDivStyles } from "../styles/styles";
 
 function CourseRegisPage() {
   const courses = [
@@ -13,9 +14,9 @@ function CourseRegisPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100">
-        <Navbar />
-        <main className="mx-auto p-6 w-4/5">
+      <div className={containerDivStyles}>
+        <NavBar />
+        <main className={mainStyles}>
           <HeadLineCard title="My Courses" link="/regis/course/detail" />
           <div className="divider"></div>
 
@@ -57,7 +58,7 @@ function CourseRegisPage() {
                         </button>
                       </Link>
                     </div>
-                    <Link to="../../payment">
+                    <Link to="/payment">
                       <button className="w-full mt-6 bg-[#A45C40] hover:bg-[#8A4832] text-white py-3 rounded-lg font-semibold transition duration-300">
                         Pay
                       </button>

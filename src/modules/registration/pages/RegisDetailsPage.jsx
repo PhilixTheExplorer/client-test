@@ -1,13 +1,12 @@
-import React from "react";
-import SInfoCard from "../components/SInfoCard";
 import NavBar from "../components/NavBar";
+import { mainStyles, containerDivStyles } from "../styles/styles";
 
 function RegisDetailsPage() {
   return (
     <>
-      <div className="min-h-screen bg-gray-100">
+      <div className={containerDivStyles}>
         <NavBar />
-        <main className="mx-auto p-6 w-4/5">
+        <main className={mainStyles}>
           <div className="grid grid-cols-2  bg-white p-6 shadow-md rounded-md">
             <div>
               <h2 className="text-2xl font-bold">Add Courses</h2>

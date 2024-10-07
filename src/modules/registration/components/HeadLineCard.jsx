@@ -13,7 +13,7 @@ function HeadLineCard({ link, title }) {
           <img
             src={profilePic}
             alt="Profile"
-            className="w-10 h-10 rounded-full"
+            className="w-10 h-10 mr-4 rounded-full"
           />
         ) : (
           <FontAwesomeIcon
